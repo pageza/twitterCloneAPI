@@ -6,6 +6,7 @@ const { sequelize } = require('./models')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+const postsRouter = require('./routes/posts')
 
 var app = express();
 
@@ -17,5 +18,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/posts', postsRouter)
 
+app.listen(3030, async()=> {
+    console.log('Server up on: 3030')
+    await sequelize.authenticate()
+    console.log('Database connected')}
+)
 module.exports = app;
