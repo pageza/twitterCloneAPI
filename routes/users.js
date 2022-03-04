@@ -35,4 +35,5 @@ router.get('/:uuid', async(req, res) => {
     return res.status(500).json(err)
   }
 })
+// TODO: finish creating CRUD routes
 module.exports = router;

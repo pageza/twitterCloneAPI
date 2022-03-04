@@ -22,4 +22,5 @@ router.get('/', async (req, res) => {
         return res.status(500).json(err)
     }
 })
+// TODO: finish adding CRUD routes
 module.exports = router
