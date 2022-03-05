@@ -17,8 +17,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/posts', postsRouter)
+app.use('/api/users', usersRouter);
+app.use('/api/posts', postsRouter)
 
 app.listen(3030, async()=> {
     console.log('Server up on: 3030')

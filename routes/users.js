@@ -35,5 +35,33 @@ router.get('/:uuid', async(req, res) => {
     return res.status(500).json(err)
   }
 })
-// TODO: finish creating CRUD routes
+router.put('/:uuid', async(req, res) => {
+  const uuid = req.params.uuid
+  const { fname, lname, uname, email, password, role } = req.body
+  try {
+    const user = await User.findOne({ where: { uuid }})
+    user.fname = fname
+    user.lname = lname
+    user.uname = uname
+    user.email = email
+    user.password = password
+    user.role = role
+
+    await user.save()
+
+    return res.json({ message: "User updated", user})
+  } catch (err) {
+    return res.status(500).json(err)
+  }
+})
+router.delete('/:uuid', async(req,res) => {
+  const uuid = req.params.uuid
+  try {
+    const user = await User.findOne({ where: { uuid } })
+    await user.destroy()
+    return res.json({"message": "Used Deleted"})
+  } catch (err) {
+    res.status(500).json(err)
+  }
+} )
 module.exports = router;

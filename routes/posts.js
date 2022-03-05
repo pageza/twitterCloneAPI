@@ -22,5 +22,29 @@ router.get('/', async (req, res) => {
         return res.status(500).json(err)
     }
 })
-// TODO: finish adding CRUD routes
+router.put('/:uuid', async(req,res) => {
+    const uuid = req.params.uuid
+    const { postTitle, postContent, postImage} = req.body
+    try {
+        const post = await Post.findOne({ where: { uuid }})
+        post.postTitle = postTitle
+        post.postContent = postContent
+        post.postImage = postImage
+
+        await post.save()
+        return res.json({'message':'Post Updated', post})
+    } catch (err) {
+        return res.status(500).json(err)
+    }
+})
+router.delete('/:uuid', async(req,res) => {
+    const uuid = req.params.uuid
+    try {
+        const post = await Post.findOne({ where: { uuid }})
+        await post.destroy()
+        return res.json({'message':'Post deleted'})
+    } catch (err) {
+        return res.status(500).json(err)
+    }
+})
 module.exports = router
