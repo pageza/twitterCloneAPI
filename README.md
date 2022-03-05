@@ -17,4 +17,9 @@
     - [ ] Like
   - [ ] Additional logic
 - [ ] Authentication
+  - [ ] User Sign up 
+  - [ ] User Login
+  - [ ] Incorporate JWT
+  - [ ] Install bcrypt/password security
 - [ ] Authorization
+  - [ ] Guard routes by role
