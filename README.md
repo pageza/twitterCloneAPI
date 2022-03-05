@@ -1,17 +1,17 @@
 #twitterCloneAPI
 
 **TODO**
-- [ ] Create database
+- [x] Create database
 - [ ] Create Models
-    - [ ] User
-    - [ ] Post
+    - [x] User
+    - [x] Post
     - [ ] Comment
     - [ ] Follow
     - [ ] Like
 - [ ] Create routes
   - [ ] **CRUD**
-    - [ ] User
-    - [ ] Post
+    - [x] User
+    - [x] Post
     - [ ] Comment
     - [ ] Follow
     - [ ] Like
