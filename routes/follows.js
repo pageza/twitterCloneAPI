@@ -12,5 +12,13 @@ router.post('/create', async (req,res) => {
         return res.status(500).json(err)
     }
 })
-
+// Get all follows
+router.get('/', async (req, res) => {
+    try {
+        const follows = await Follow.findAll()
+        return res.json(follows)
+    } catch (err) {
+        return res.status(500).json(err)
+    }
+})
 module.exports = router

@@ -17,11 +17,11 @@ module.exports = (sequelize, DataTypes) => {
   }
   Follow.init({
     follower_id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       primaryKey: true
     },
     followee_id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       primaryKey: true
     }
   }, {

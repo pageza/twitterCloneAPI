@@ -22,7 +22,7 @@ app.use('/', indexRouter)
 app.use('/api/users', usersRouter)
 app.use('/api/posts', postsRouter)
 app.use('/api/comments', commentsRouter)
-// app.use('/api/follows', followsRouter)
+app.use('/api/follows', followsRouter)
 
 app.listen(3030, async()=> {
     console.log('Server up on: 3030')

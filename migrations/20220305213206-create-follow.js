@@ -3,12 +3,12 @@ module.exports = {
   async up(queryInterface, DataTypes) {
     await queryInterface.createTable('follows', {
       follower_id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull: false,
         primaryKey: true
       },
       followee_id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull: false,
         primaryKey: true
       },
