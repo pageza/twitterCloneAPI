@@ -7,6 +7,7 @@ const { sequelize } = require('./models')
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 const postsRouter = require('./routes/posts')
+const commentsRouter = require('./routes/comments')
 
 var app = express();
 
@@ -19,6 +20,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/posts', postsRouter)
+app.use('/api/comments', commentsRouter)
 
 app.listen(3030, async()=> {
     console.log('Server up on: 3030')
