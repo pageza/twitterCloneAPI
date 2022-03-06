@@ -5,14 +5,14 @@
 - [ ] Create Models
     - [x] User
     - [x] Post
-    - [ ] Comment
+    - [x] Comment
     - [ ] Follow
     - [ ] Like
 - [ ] Create routes
   - [ ] **CRUD**
     - [x] User
     - [x] Post
-    - [ ] Comment
+    - [x] Comment
     - [ ] Follow
     - [ ] Like
   - [ ] Additional logic
