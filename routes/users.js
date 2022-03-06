@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 const { User, Follow } = require('../models')
-const { Op } = require('sequelize')
 
 /* Create User */
 router.post('/create', async(req, res) => {
@@ -26,11 +25,15 @@ router.get('/', async(req, res) => {
 router.get('/:uuid', async(req, res) => {
   const uuid = req.params.uuid
   try {
+    // This is a dirty workaround until I can figure out how to pull the followers in like posts and comments in the 'include'
+    const followers = await Follow.findAll({ where: {followee_id: uuid}})
+    console.log(followers)
+    //
     const user = await User.findOne({
       where: { uuid },
-      include: [ 'followers', 'posts', 'comments']
+      include: [ 'posts', 'comments']
     })
-    return res.json(user)
+    return res.json({user, followers})
   } catch (err) {
     console.log(err)
     return res.status(500).json(err)

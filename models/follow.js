@@ -11,8 +11,11 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate({ User }) {
       // define association here
-      this.belongsTo(User, {foreignKey: 'follower_id', as: 'follower'})
-      this.belongsTo(User, {foreignKey: 'followee_id', as: 'followee'})
+      this.hasMany(User, {foreignKey: 'uuid', as: 'followers'})
+      // this.belongsTo(User, {foreignKey: 'followee_id', as: 'followee'})
+    }
+    toJSON() {
+      return { ...this.get(), followee_id: undefined}
     }
   }
   Follow.init({

@@ -13,12 +13,12 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       this.hasMany(Post, { foreignKey: 'userId', as: 'posts'})
       this.hasMany(Comment, { foreignKey: 'userId', as: 'comments'})
-      this.hasMany(Follow, { foreignKey: 'follower_id', as: 'followers'})
-      this.hasMany(Follow, { foreignKey: 'followee_id', as: 'followee'})
+      this.belongsTo(Follow, { foreignKey: 'uuid', as: 'follower'})
+      // this.hasMany(Follow, { foreignKey: 'followee_id', as: 'followee'})
     }
-    // toJSON(){
-    //   // return { ...this.get(), id: undefined }
-    // }
+    toJSON(){
+      return { ...this.get(), id: undefined }
+    }
   }
   User.init({
     uuid: {
