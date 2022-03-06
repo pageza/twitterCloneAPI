@@ -27,7 +27,7 @@ router.get('/', async (req, res) => {
 router.get('/:uuid', async (req,res) => {
     const uuid = req.params.uuid
     try {
-        const post = await Post.findOne({ where: { uuid }, include: ['user', 'comments']})
+        const post = await Post.findOne({ where: { uuid }, include: ['user', 'comments', 'likes']})
         return res.json(post)
     } catch (err) {
         return res.status(500).json(err)
