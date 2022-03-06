@@ -6,14 +6,14 @@
     - [x] User
     - [x] Post
     - [x] Comment
-    - [ ] Follow
+    - [x] Follow
     - [ ] Like
 - [ ] Create routes
   - [ ] **CRUD**
     - [x] User
     - [x] Post
     - [x] Comment
-    - [ ] Follow
+    - [x] Follow
     - [ ] Like
   - [ ] Additional logic
 - [ ] Authentication
