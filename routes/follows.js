@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const { Follow } = require('../models')
+const { Op } = require('sequelize')
 
 // Create follow
 router.post('/create', async (req,res) => {
@@ -33,6 +34,34 @@ router.get('/:uuid', async (req, res) => {
             include: 'followers'
         })
         return res.json(follows)
+    } catch (err) {
+        return res.status(500).json(err)
+    }
+})
+// Update a follow: not sure this will have a use
+router.put('/:uuid', async (req, res) => {
+    const { followee_id, follower_id } = req.body
+    try {
+        const follow = await Follow.findOne({
+            where: { [Op.and]: [{ followee_id }, {follower_id}] }
+        })
+        follow.followee_id = followee_id
+        follow.follower_id = follower_id
+        await follow.save()
+        return res.json({ message: "Updated Follow", follow})
+    } catch (err) {
+        return res.status(500).json(err)
+    }
+})
+// Delete a follow
+router.delete('/unfollow', async (req, res) => {
+    const { followee_id, follower_id } = req.body
+    try {
+        const follow = await Follow.findOne({
+            where: { [Op.and]: [{ followee_id }, {follower_id}] }
+        })
+        await follow.destroy()
+        return res.json({ message: "Unfollowed user" })
     } catch (err) {
         return res.status(500).json(err)
     }
