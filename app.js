@@ -9,6 +9,7 @@ var usersRouter = require('./routes/users')
 const postsRouter = require('./routes/posts')
 const commentsRouter = require('./routes/comments')
 const followsRouter = require('./routes/follows')
+const likesRouter = require('./routes/likes')
 
 var app = express()
 
@@ -23,6 +24,7 @@ app.use('/api/users', usersRouter)
 app.use('/api/posts', postsRouter)
 app.use('/api/comments', commentsRouter)
 app.use('/api/follows', followsRouter)
+app.use('/api/likes', likesRouter)
 
 app.listen(3030, async()=> {
     console.log('Server up on: 3030')
