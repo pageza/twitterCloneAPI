@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
-const { User } = require('../models')
+const { User, Follow } = require('../models')
+const { Op } = require('sequelize')
 
 /* Create User */
 router.post('/create', async(req, res) => {
@@ -27,7 +28,7 @@ router.get('/:uuid', async(req, res) => {
   try {
     const user = await User.findOne({
       where: { uuid },
-      include: ['posts', 'followers']
+      include: [ 'followers', 'posts', 'comments']
     })
     return res.json(user)
   } catch (err) {

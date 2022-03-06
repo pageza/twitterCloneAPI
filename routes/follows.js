@@ -6,7 +6,9 @@ const { User, Follow } = require('../models')
 router.post('/create', async (req,res) => {
     const { follower_id, followee_id } = req.body
     try {
-        const follow = await Follow.create({ follower_id, followee_id })
+        const follower = await User.findOne({ where: {uuid: follower_id}})
+        const followee = await  User.findOne({ where: {uuid: followee_id}})
+        const follow = await Follow.create({ follower_id: follower.id, followee_id: followee.id })
         return res.json(follow)
     } catch (err) {
         return res.status(500).json(err)
