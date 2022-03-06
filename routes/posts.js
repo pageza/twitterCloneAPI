@@ -17,7 +17,7 @@ router.post('/create', async(req,res) => {
 // Get all posts with comments and user
 router.get('/', async (req, res) => {
     try {
-        const posts = await Post.findAll({ include: ['user','comments']})
+        const posts = await Post.findAll({ include: ['user','comments', 'likes']})
         return res.json(posts)
     } catch (err) {
         return res.status(500).json(err)

@@ -2,20 +2,20 @@
 
 **TODO**
 - [x] Create database
-- [ ] Create Models
+- [x] Create Models
+    - [x] User
+    - [x] Post
+    - [x] Comment
+    - [x] Follow
+    - [x] Like
+- [ ] Create routes\
+  **CRUD**
     - [x] User
     - [x] Post
     - [x] Comment
     - [x] Follow
     - [ ] Like
-- [ ] Create routes
-  - [ ] **CRUD**
-    - [x] User
-    - [x] Post
-    - [x] Comment
-    - [x] Follow
-    - [ ] Like
-  - [ ] Additional logic
+    - [ ] Additional logic
 - [ ] Authentication
   - [ ] User Sign up 
   - [ ] User Login
