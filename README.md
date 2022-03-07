@@ -10,12 +10,12 @@
     - [x] Like
 - [ ] Create routes\
   **CRUD**
-    - [x] User
-    - [x] Post
-    - [x] Comment
-    - [x] Follow
-    - [ ] Like
-    - [ ] Additional logic
+  - [x] User
+     - [x] Post
+     - [x] Comment
+     - [x] Follow
+     - [x] Like
+     - [ ] Additional logic
 - [ ] Authentication
   - [ ] User Sign up 
   - [ ] User Login
