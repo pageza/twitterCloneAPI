@@ -1,17 +1,36 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 const { User, Follow } = require('../models')
+const bcrypt = require('bcrypt')
 
 /* Create User */
 router.post('/create', async(req, res) => {
-  const { fname, lname, uname, email, password, role } = req.body
+  console.log(req.body)
+  req.body.role = 'user'
+  // bcrypt.hash(req.body.password, 12,  async (hash) => {
+  //   console.log(hash)
+  //
+  // } )
+  const { fname, lname, uname, email, role } = req.body
   try {
-    const user = await User.create({ fname, lname, uname, email, password, role })
-    return res.json(user)
+    const user = await User.create({ fname, lname, uname, email, password: hash, role })
+    return res.status(201).json(user)
   } catch (err) {
     return res.status(500).json(err)
   }
 });
+// Log a user in
+router.post( '/login', async (req,res) => {
+  let uname = req.body.uname;
+  try {
+     let currentUser = await User.findOne({
+      where: { uname }
+    })
+    return res.status(200).json(currentUser)
+  } catch (err) {
+    return res.status(500).json(err)
+  }
+})
 // Get all the users
 router.get('/', async(req, res) => {
   try {
