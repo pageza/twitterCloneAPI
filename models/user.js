@@ -1,5 +1,16 @@
 'use strict';
 const {  Model } = require('sequelize');
+const bcrypt = require('bcrypt')
+
+function generateHash(user) {
+  if(user == null) throw new Error('User not found')
+  else if (!user.changed('password')) return user.password
+  else {
+    let salt = bcrypt.genSaltSync()
+    return user.password = bcrypt.hashSync(user.password, salt)
+  }
+}
+
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     /**
@@ -34,7 +45,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     uname: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     email: {
       type: DataTypes.STRING,
@@ -53,5 +64,7 @@ module.exports = (sequelize, DataTypes) => {
     tableName: 'users',
     modelName: 'User',
   });
+  User.beforeCreate(generateHash)
+  User.beforeUpdate(generateHash)
   return User;
 };

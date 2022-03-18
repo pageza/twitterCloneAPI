@@ -7,13 +7,9 @@ const bcrypt = require('bcrypt')
 router.post('/create', async(req, res) => {
   console.log(req.body)
   req.body.role = 'user'
-  // bcrypt.hash(req.body.password, 12,  async (hash) => {
-  //   console.log(hash)
-  //
-  // } )
-  const { fname, lname, uname, email, role } = req.body
+  const { fname, lname, uname, email, password, role } = req.body
   try {
-    const user = await User.create({ fname, lname, uname, email, password: hash, role })
+    const user = await User.create({ fname, lname, uname, email, password, role })
     return res.status(201).json(user)
   } catch (err) {
     return res.status(500).json(err)
